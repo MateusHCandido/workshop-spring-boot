@@ -2,6 +2,8 @@ package com.mtzz.workshop.DTO;
 
 import com.mtzz.workshop.domain.Usuario;
 
+import java.util.Optional;
+
 public class UsuarioDTO {
     private String id;
     private String name;
@@ -15,6 +17,8 @@ public class UsuarioDTO {
         name = usuario.getName();
         email = usuario.getEmail();
     }
+
+
 
 
     public String getId() {
