@@ -1,5 +1,6 @@
 package com.mtzz.workshop.resources;
 
+import com.mtzz.workshop.DTO.UsuarioDTO;
 import com.mtzz.workshop.domain.Usuario;
 import com.mtzz.workshop.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/usuarios")
@@ -18,8 +20,10 @@ public class UsuarioResource {
     private UsuarioService service;
 
     @GetMapping(value = "/list/users")
-    public ResponseEntity<List<Usuario>> findAll(){
+    public ResponseEntity<List<UsuarioDTO>> findAll(){
         List<Usuario> usuarios = service.findAll();
-        return ResponseEntity.ok().body(usuarios);
+        List<UsuarioDTO> listDTO = usuarios.stream().map(UsuarioDTO::new).
+                collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 }
