@@ -1,6 +1,6 @@
 package com.mtzz.workshop.config;
 
-import com.mtzz.workshop.UsuarioRepository;
+import com.mtzz.workshop.repositories.UsuarioRepository;
 import com.mtzz.workshop.domain.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

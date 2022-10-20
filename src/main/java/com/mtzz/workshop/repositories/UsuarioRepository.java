@@ -1,4 +1,4 @@
-package com.mtzz.workshop;
+package com.mtzz.workshop.repositories;
 
 import com.mtzz.workshop.domain.Usuario;
 import org.springframework.data.mongodb.repository.MongoRepository;

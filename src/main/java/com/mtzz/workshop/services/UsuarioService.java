@@ -1,6 +1,7 @@
 package com.mtzz.workshop.services;
 
-import com.mtzz.workshop.UsuarioRepository;
+import com.mtzz.workshop.DTO.UsuarioDTO;
+import com.mtzz.workshop.repositories.UsuarioRepository;
 import com.mtzz.workshop.domain.Usuario;
 import com.mtzz.workshop.services.exceptions.ObjectNotFoundExcepetion;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,13 @@ public class UsuarioService {
     public Usuario findById(String id){
         Optional<Usuario> usuario = repository.findById(id);
         return usuario.orElseThrow(() -> new ObjectNotFoundExcepetion("Objeto não encontrado")); 
+    }
+
+    public Usuario insert(Usuario usuario){
+       return repository.insert(usuario);
+    }
+
+    public Usuario fromDTO(UsuarioDTO usuarioDTO){
+        return new Usuario(usuarioDTO.getId(), usuarioDTO.getName(), usuarioDTO.getName());
     }
 }
