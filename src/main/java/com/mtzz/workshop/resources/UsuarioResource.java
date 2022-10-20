@@ -19,6 +19,7 @@ public class UsuarioResource {
     @Autowired
     private UsuarioService service;
 
+
     @GetMapping(value = "/list/users")
     public ResponseEntity<List<UsuarioDTO>> findAll(){
         List<Usuario> usuarios = service.findAll();
@@ -40,5 +41,11 @@ public class UsuarioResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId())
                 .toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping(value = "/id/delete/{id}")
+    public ResponseEntity<UsuarioDTO> deleteById(@PathVariable String id){
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
