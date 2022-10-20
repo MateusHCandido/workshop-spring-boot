@@ -35,6 +35,19 @@ public class UsuarioService {
         repository.deleteById(id);
     }
 
+    //Dados de argumento são os enviados pelo usuário
+    public Usuario update(Usuario usuario){
+        Usuario user = findById(usuario.getId());
+        updateData(user, usuario);
+        return repository.save(usuario);
+    }
+
+    private void updateData(Usuario user, Usuario usuario) {
+        user.setName(usuario.getName());
+        user.setEmail(usuario.getEmail());
+    }
+
+
     public Usuario fromDTO(UsuarioDTO usuarioDTO){
         return new Usuario(usuarioDTO.getId(), usuarioDTO.getName(), usuarioDTO.getName());
     }
