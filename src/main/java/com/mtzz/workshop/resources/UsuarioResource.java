@@ -1,6 +1,7 @@
 package com.mtzz.workshop.resources;
 
 import com.mtzz.workshop.DTO.UsuarioDTO;
+import com.mtzz.workshop.domain.Post;
 import com.mtzz.workshop.domain.Usuario;
 import com.mtzz.workshop.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,11 @@ public class UsuarioResource {
         usuario.setId(id);
         usuario = service.update(usuario);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/id/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        Usuario usuario = service.findById(id);
+        return ResponseEntity.ok().body(usuario.getPosts());
     }
 }
