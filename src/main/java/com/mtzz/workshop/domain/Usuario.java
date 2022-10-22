@@ -1,8 +1,11 @@
 package com.mtzz.workshop.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "user")
@@ -12,8 +15,10 @@ public class Usuario {
     private String id;
     private String name;
     private String email;
-    //associações
 
+    //associações
+    @DBRef(lazy = true)
+    private List<Post> posts = new ArrayList();
 
     public Usuario(){}
 
@@ -48,6 +53,9 @@ public class Usuario {
         this.email = email;
     }
 
+    public List<Post> getPosts() {
+        return posts;
+    }
 
     @Override
     public boolean equals(Object o) {
