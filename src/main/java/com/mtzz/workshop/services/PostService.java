@@ -5,6 +5,8 @@ import com.mtzz.workshop.repositories.PostRepository;
 import com.mtzz.workshop.services.exceptions.ObjectNotFoundExcepetion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +19,10 @@ public class PostService {
     public Post findById(String id){
         Optional<Post> usuario = repository.findById(id);
         return usuario.orElseThrow(() -> new ObjectNotFoundExcepetion("Objeto não encontrado"));
+    }
+
+    public List<Post> findByTitle(String text){
+        return repository.findByTitleContainingIgnoreCase(text);
     }
 
 }
