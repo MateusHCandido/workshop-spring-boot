@@ -49,7 +49,7 @@ public class UsuarioService {
 
 
     public Usuario fromDTO(UsuarioDTO usuarioDTO){
-        return new Usuario(usuarioDTO.getId(), usuarioDTO.getName(), usuarioDTO.getName());
+        return new Usuario(usuarioDTO.getId(), usuarioDTO.getName(), usuarioDTO.getEmail());
     }
 
 }

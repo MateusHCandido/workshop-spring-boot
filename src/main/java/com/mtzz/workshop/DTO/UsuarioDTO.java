@@ -19,8 +19,6 @@ public class UsuarioDTO {
     }
 
 
-
-
     public String getId() {
         return id;
     }
