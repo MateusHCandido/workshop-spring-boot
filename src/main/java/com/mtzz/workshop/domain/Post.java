@@ -1,10 +1,13 @@
 package com.mtzz.workshop.domain;
 
 import com.mtzz.workshop.DTO.AuthorDTO;
+import com.mtzz.workshop.DTO.CommentDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "post")
@@ -17,6 +20,7 @@ public class Post {
     private String body;
 
     private AuthorDTO author;
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post(){}
 
@@ -67,6 +71,10 @@ public class Post {
 
     public void setAuthor(AuthorDTO author) {
         this.author = author;
+    }
+
+    public List<CommentDTO> getComments() {
+        return comments;
     }
 
     @Override

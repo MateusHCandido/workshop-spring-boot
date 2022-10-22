@@ -1,6 +1,7 @@
 package com.mtzz.workshop.config;
 
 import com.mtzz.workshop.DTO.AuthorDTO;
+import com.mtzz.workshop.DTO.CommentDTO;
 import com.mtzz.workshop.domain.Post;
 import com.mtzz.workshop.repositories.PostRepository;
 import com.mtzz.workshop.repositories.UsuarioRepository;
@@ -41,6 +42,11 @@ public class Instatiation implements CommandLineRunner {
         Post p2 = new Post(null, sdf.parse("22/10/2022"),"Novo ciclo de estudos"
                 ,"Ainda hoje iniciando curso de HTML, CSS e JS", new AuthorDTO(u3));
 
+        CommentDTO c1 = new CommentDTO("Parabéns!!", sdf.parse("22/10/2022"), new AuthorDTO(u1));
+        CommentDTO c2 = new CommentDTO("Parabéns! Muito sucesso", sdf.parse("23/10/2022"), new AuthorDTO(u2));
+
+        p1.getComments().add(c1);
+        p2.getComments().add(c2);
         post.saveAll(Arrays.asList(p1, p2));
 
         u3.getPosts().addAll(Arrays.asList(p1, p2));
