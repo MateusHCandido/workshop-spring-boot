@@ -63,4 +63,6 @@ public class UsuarioResource {
         Usuario usuario = service.findById(id);
         return ResponseEntity.ok().body(usuario.getPosts());
     }
+
+
 }
